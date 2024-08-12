@@ -1,0 +1,30 @@
+{% extends 'paciente/base_paciente.html'%}
+{% load static %}
+
+<!--titulo da pagina ex: Resultado de exames-->
+{% block titulo-da-pagina %}
+
+<div id="titulo-quadro-lateral">Localização</div>
+
+{% endblock titulo-da-pagina %}
+
+<!--Quadro e lista de informacoes da pagina-->
+{% block quadro-central-e-exames %}
+
+<div id="qd-central">
+    <div id="header-infos">
+        <ul id="lista-info">
+            <li id="resultado-exames"><a href="{% url 'AreaPaciente' %}" id="link">Resultados de exames</a></li>
+            <li id="consultas"><a href="{% url 'AreaConsulta' %}" id="link">Consultas</a></li>
+            <li id="local">Localização</li>
+            <li id="mnh-cnt"><a href="{% url 'view_usuario' id=user.id %}" id="links">Minha Conta</a></li>
+        </ul>
+        
+    </div>
+
+    <div id="local-mapa">
+        <iframe id="mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.5379096966926!2d-46.57470932376013!3d-23.549116861144242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5e95b7b5aa0b%3A0x450f13638a52d878!2sR.%20Coelho%20Lisboa%2C%20538%20-%20Cidade%20M%C3%A3e%20do%20C%C3%A9u%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2003323-040!5e0!3m2!1spt-BR!2sbr!4v1712621457787!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>
+
+{% endblock quadro-central-e-exames %}

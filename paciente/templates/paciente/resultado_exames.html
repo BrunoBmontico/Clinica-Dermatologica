@@ -1,0 +1,84 @@
+{% extends 'paciente/base_paciente.html'%}
+{% load static %}
+
+<!--titulo da pagina ex: Resultado de exames-->
+{% block titulo-da-pagina %}
+
+<div id="titulo-quadro-lateral">Resultado de exames</div>
+
+{% endblock titulo-da-pagina %}
+
+{% block info %}
+
+<!-- <div id="container-info" class="info-open">
+    <div id="content-info">
+        <div class="container-campo">
+            <label class="label">Prontuario:</label>
+            <textarea name="prontuario" class="campo-info">{{Consuta.Prontuario}}</textarea>
+        </div>
+
+        <div class="container-campo">
+            <label>Receita:</label>
+            <textarea name="receita" class="campo-info"></textarea>
+        </div>
+
+        <div class="container-campo">
+            <label>exame:</label>
+            <textarea name="exame" class="campo-info"></textarea>
+        </div>
+    </div>
+</div> -->
+
+{% endblock info %}
+
+<!--Quadro e lista de informacoes da pagina-->
+{% block quadro-central-e-exames %}
+
+<!--Barra de navegacao do paciente-->
+<div id="qd-central">
+    <div id="header-infos">
+        <ul id="lista-info">
+            <li id="resultado-exames">Resultados de exames</li>
+            <li id="consulta"><a href="{% url 'AreaConsulta' %}" id="links">Consultas</a></li>
+            <li id="local"><a href="/paciente/AreaLocal/" id="links">Localização</a></li>
+            <li id="mnh-cnt"><a href="{% url 'view_usuario' id=user.id %}" id="links">Minha Conta</a></li>
+        </ul>
+    </div>
+
+    <div id="qd-exames">
+
+        <!--Quadro de informacoes da pagina-->
+        {% if consultas_paciente %}
+            {% for consulta in consultas_paciente %}
+
+                <div class="listas-exames">
+                    <div id="box-branca">
+                        <button id="btn-exames">
+                        <a href="{% url 'view_exames' id=consulta.id %}"><img src="/static/img/img_geral/img-dwnl.svg" alt="" id="img-exame"></a>
+                        </button>
+                    </div>
+                    <div id="posicao-txt">
+                        <p id="data-txt">{{ consulta.Data }}</p>
+                        <p id="Medico-txt">Dr. {{ consulta.Medico }}</p>
+                    </div>
+                    <div id="posicao-especialidade">
+                        <p id="especialidade">{{ consulta.Especialidade }}</p>
+                    </div>
+                </div>
+                
+            {% endfor %}
+        {% else %}
+
+            <div class="lista-consultas">
+                <div id="posicao-aviso-txt">
+                    <p id="aviso-txt">Você ainda não tem consultas concluidas no momento.</p>
+                </div>
+            </div>
+
+        {% endif %}
+            
+            
+    </div>
+</div>
+
+{% endblock quadro-central-e-exames %}

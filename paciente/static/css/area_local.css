@@ -1,0 +1,100 @@
+#titulo-quadro-lateral{
+
+    font-size: 25px;
+    color:  #BEBEBE;
+    padding-left: 60px;
+    padding-bottom: 60px;
+    
+}
+
+#body-principal{
+    display: flex;
+    
+}
+
+#header-infos{
+
+    background-color: #FFCED6;
+    height: 70px;
+    width: 100%;
+    align-items: center;
+
+}
+
+#lista-info{
+
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    list-style: none;
+    gap: 10%;
+    font-size: 20px;
+    z-index: 2;
+
+}
+
+#link{
+    color: #FFF;
+}
+
+#local{
+    color: #F86A83;
+}
+
+#local-mapa{
+
+    display: flex;
+    background-color: #f7e6e9;
+    width: 100%;
+    height: 970px;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+#mapa{
+
+    height: 600px;
+    width: 1200px;
+    
+}
+    
+@media(max-width: 1500px){
+
+    #header-infos{
+        width: 100%;
+    }
+
+    #mapa{
+
+        height: 300px;
+        width: 800px;
+        
+    }
+    *{
+        font-size: medium;
+    }
+    #qd-exames{
+        width: 100%;
+        padding-left: 10%;
+    }
+    
+    #titulo-quadro-lateral{
+    
+        padding-left: 10%;
+        font-size: medium;
+        padding-bottom: 10%;
+    }
+        
+
+    #local-mapa{
+        width: 1050px;
+
+    }
+    #mapa{
+
+        height: 400px;
+    }
+}
+       

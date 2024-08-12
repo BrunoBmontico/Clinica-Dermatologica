@@ -1,0 +1,412 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+<!-- isso faz com que o header tenha a animação necessaria apenas na homepage -->
+{% block isHomePage %}
+<script>
+    let isHomePage = true;
+</script>
+{% endblock isHomePage %}
+
+<!-- define o tamanho do header dependendo da pagina -->
+{% block heigth_header %} header_home {% endblock heigth_header %}
+
+<!-- BANNER DO HEADER -->
+{% block banner_header %}
+<img src="/static/img/img_homePage/banner_pink.svg" id="banner_pink">
+{% endblock banner_header %}
+
+{% block content %}
+
+<!-- BOTAO PRA SUBIR A PAGINA -->
+<div id="container-btnup">
+    <a href="#" id="btnup">
+        <img src="/static/img/img_homePage/btnup.svg" id="img-btnup">
+    </a>
+</div>
+
+<!--MENU DE SERVIÇOS-->
+<section id="servs">
+    <div class="menu-serv">
+        <li id="title-serv">Nossos Serviços</li>
+        <nav id="btns-serv">
+            <div class="serv">
+                <img src="/static/img/img_homePage/spa.svg" class="img-serv">
+                <a href="#spa" class="anchor">
+                    <p class="title-btn">SPA</p>
+                </a>
+            </div>
+
+            <div class="serv">
+                <img src="/static/img/img_homePage/espaço_beleza.svg" class="img-serv">
+                <a href="#espaco-beleza" class="anchor">
+                    <p class="title-btn">Espaço de Beleza</p>
+                </a>
+            </div>
+
+            <div class="serv">
+                <img src="/static/img/img_homePage/dermatologia.svg" class="img-serv">
+                <a href="#derma" class="anchor">
+                    <p class="title-btn">Dermatologia</p>
+                </a>
+            </div>
+
+            <div class="serv">
+                <img src="/static/img/img_homePage/estética.svg" class="img-serv">
+                <a href="#estetica" class="anchor">
+                    <p class="title-btn">Estética</p>
+                </a>
+            </div>
+        </nav>
+    </div>
+</section>
+
+<!--APRESENTAÇÃO-->
+<section id="apresentacao">
+    <p id="title-ap">
+        Somos a mais moderna clínica dermatológica que está revolucionando
+        a forma de cuidar da sua aparência.
+    </p>
+
+    <div id="descs">
+        <div class="desc">
+            <P class="title-desc">Nossa Unidade</P>
+            <p class="text-desc">
+                Do diagnostico ao tratamento você resolve tudo em um só lugar.
+                Sempre de forma eficiente e acolhedora.
+            </p>
+        </div>
+        <div class="desc">
+            <p class="title-desc">Nossa Equipe</p>
+            <p class="text-desc">
+                Tem experiência em grandes hospitais e é sempre avaliada pelo nosso
+                programa de aperfeiçoamento.
+            </p>
+        </div>
+        <div class="desc">
+            <p class="title-desc">Equipamentos</p>
+            <p class="text-desc">
+                Nossos equipamentos são modernos, garantindo resultado rapido e preciso.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!--BARRA HORIZONTAL-->
+<div id="bars">
+    <div id="bar1"></div>
+    <div id="bar2"></div>
+</div>
+
+<!--SERVIÇOS-->
+<section id="spa">
+    <div class="menu-serv content">
+        <img src="/static/img/img_homePage/spa.svg" id="img-content">
+        <p id="title-content">SPA</p>
+        <nav class="btns-content">
+            <div id="btn">
+                {% if user.is_authenticated %}
+                <a href="{% url 'agendar_consulta' id=user.id %}">
+                {% else %}
+                <a href="/login/">
+                {% endif %}
+                    <div id="serv-list">
+                        <li>Máscara Facial de Aveia e Mel.</li>
+                        <li>Banho de Relaxamento com Sal Epsom.</li>
+                        <li>Esfoliação Corporal com Açúcar e Óleo de Coco.</li>
+                    </div>
+                    <div id="display-bottom">
+                        <div id="line">
+                            <p id="name-serv">Spa Simples</p>
+                            <p id="hour">2:00 Horas</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div id="btn">
+                {% if user.is_authenticated %}
+                <a href="{% url 'agendar_consulta' id=user.id %}">
+                {% else %}
+                <a href="/login/">
+                {% endif %}
+                    <div id="serv-list">
+                        <li>Limpeza Facial Profunda e Máscara de Argila</li>
+                        <li>Esfoliação Corporal</li>
+                        <li>Massagem e Terapia de Pedras Quentes</li>
+                    </div>
+                    <div id="display-bottom">
+                        <div id="line">
+                            <p id="name-serv">Spa Completo</p>
+                            <p id="hour">2:30 Horas</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div id="btn">
+                {% if user.is_authenticated %}
+                <a href="{% url 'agendar_consulta' id=user.id %}">
+                {% else %}
+                <a href="/login/">
+                {% endif %}
+                    <div id="serv-list">
+                        <li>Revitalização Facial Premium com Máscara de Ouro</li>
+                        <li>Banho Luxuoso com Aromaterapia</li>
+                        <li>Tratamento Facial e Máscara de Diamante</li>
+                    </div>
+                    <div id="display-bottom">
+                        <div id="line">
+                            <p id="name-serv">Spa Luxo</p>
+                            <p id="hour">3:00 Horas</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </nav>
+    </div>
+</section>
+
+<section id="espaco-beleza">
+    <div class="menu-serv content">
+        <img src="/static/img/img_homePage/espaço_beleza.svg" id="img-content">
+        <p id="title-content">Espaço de Beleza</p>
+        <nav class="btns-content">
+            <div id="btn">
+                <a href="#">
+                    <div id="serv-list">
+                        <li>Corte de Tendência com Estilo Personalizado</li>
+                        <li>Tratamento Capilar de Hidratação Profunda</li>
+                        <li>Coloração e Técnica de Mechas Balayage</li>
+                    </div>
+                    <div id="display-bottom">
+                        <div id="line">
+                            <p id="serv-title">Cabeleireiro</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div id="btn">
+                {% if user.is_authenticated %}
+                <a href="{% url 'agendar_consulta' id=user.id %}">
+                {% else %}
+                <a href="/login/">
+                {% endif %}
+                    <div id="serv-list">
+                        <li>Depilação com Cera Quente de Mel e Camomila</li>
+                        <li>Depilação a Laser</li>
+                        <li>Design de Sobrancelhas com Depilação Egípcia para Modelagem Perfeita</li>
+                    </div>
+                    <div id="display-bottom">
+                        <div id="line">
+                            <p id="serv-title">Depilação</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div id="btn">
+                {% if user.is_authenticated %}
+                <a href="{% url 'agendar_consulta' id=user.id %}">
+                {% else %}
+                <a href="/login/">
+                {% endif %}
+                    <div id="serv-list">
+                        <li>Manicure Luxuosa com Spa para Mãos</li>
+                        <li>Nail Art Exclusiva com Técnica de Marmorização</li>
+                        <li>Tratamento de Parafina para Unhas e Cutículas</li>
+                    </div>
+                    <div id="display-bottom">
+                        <div id="line">
+                            <p id="serv-title">Manicure</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div id="btn">
+                {% if user.is_authenticated %}
+                <a href="{% url 'agendar_consulta' id=user.id %}">
+                {% else %}
+                <a href="/login/">
+                {% endif %}
+                    <div id="serv-list">
+                        <li>Spa dos Pés com Esfoliação, Hidratação e Massagem</li>
+                        <li>Tratamento para Calos e Unhas Encravadas</li>
+                        <li>Reflexologia Podal</li>
+                    </div>
+                    <div id="display-bottom">
+                        <div id="line">
+                            <p id="serv-title">Podologia</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </nav>
+    </div>
+</section>
+
+<section id="derma">
+    <div class="menu-serv content">
+        <img src="/static/img/img_homePage/dermatologia.svg" id="img-content">
+        <p id="title-content">Dermatologia</p>
+        <nav class="btns-content">
+            <div id="btn">
+                {% if user.is_authenticated %}
+                <a href="{% url 'agendar_consulta' id=user.id %}">
+                {% else %}
+                <a href="/login/">
+                {% endif %}
+                    <div id="serv-list">
+                        <li>Terapia e Fatores de Crescimento</li>
+                        <li>Microagulhamento para Estimulação de Colágeno</li>
+                        <li>Tratamento para Cicatrizes e Linhas de Expressão</li>
+                    </div>
+                    <div id="display-bottom">
+                        <div id="line">
+                            <p id="serv-title">Dermapen</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div id="btn">
+                {% if user.is_authenticated %}
+                <a href="{% url 'agendar_consulta' id=user.id %}">
+                {% else %}
+                <a href="/login/">
+                {% endif %}
+                    <div id="serv-list">
+                        <li>Revitalização Cutânea com CO2 Fracionado</li>
+                        <li>Remoção de Manchas e Vasos com Laser Nd:YAG</li>
+                        <li>Lifting Facial Não Cirúrgico com Laser Erbium</li>
+                    </div>
+                    <div id="display-bottom">
+                        <div id="line">
+                            <p id="serv-title">Lasers</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div id="btn">
+                {% if user.is_authenticated %}
+                <a href="{% url 'agendar_consulta' id=user.id %}">
+                {% else %}
+                <a href="/login/">
+                {% endif %}
+                    <div id="serv-list">
+                        <li>Ácido Glicólico de Alta Concentração</li>
+                        <li>Ácido Salicílico para Controle da Oleosidade</li>
+                        <li>Químico Suave para Iluminar a Pele e Uniformizar o Tom</li>
+                    </div>
+                    <div id="display-bottom">
+                        <div id="line">
+                            <p id="serv-title">Peeling Químico</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div id="btn">
+                {% if user.is_authenticated %}
+                <a href="{% url 'agendar_consulta' id=user.id %}">
+                {% else %}
+                <a href="/login/">
+                {% endif %}
+                    <div id="serv-list">
+                        <li>Volume Labial Natural com Ácido Hialurônico</li>
+                        <li>Escultura Facial com Preenchimento de Rugas</li>
+                        <li>Preenchimento de Olheiras com Ácido Hialurônico</li>
+                    </div>
+                    <div id="display-bottom">
+                        <div id="line">
+                            <p id="serv-title">Preenchimento</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </nav>
+    </div>
+</section>
+
+<section id="estetica">
+    <div class="menu-serv content">
+        <img src="/static/img/img_homePage/estética.svg" id="img-content">
+        <p id="title-content">Estética</p>
+        <nav class="btns-content">
+            <div id="btn">
+                {% if user.is_authenticated %}
+                <a href="{% url 'agendar_consulta' id=user.id %}">
+                {% else %}
+                <a href="/login/">
+                {% endif %}
+                    <div id="serv-list">
+                        <li>Massagem Modeladora e Radiofrequência</li>
+                        <li>Redução de Gordura e Definição Localizada</li>
+                        <li>Drenagem Linfática para Celulite</li>
+                    </div>
+                    <div id="display-bottom">
+                        <div id="line">
+                            <p id="serv-title">Corporal</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div id="btn">
+                {% if user.is_authenticated %}
+                <a href="{% url 'agendar_consulta' id=user.id %}">
+                {% else %}
+                <a href="/login/">
+                {% endif %}
+                    <div id="serv-list">
+                        <li>Revitalização Facial com Limpeza Especial</li>
+                        <li>Renovação com Microdermoabrasão</li>
+                        <li>Fotorejuvenescimento com Luz Pulsada</li>
+                    </div>
+                    <div id="display-bottom">
+                        <div id="line">
+                            <p id="serv-title">Facial</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </nav>
+    </div>
+</section>
+
+<!--BARRAS LATERAIS-->
+<div id="conteiner-bars">
+
+    <div id="side-bar1">
+        <div class="sbar1"></div>
+        <div class="sbar2"></div>
+        <div class="sbar-small1"></div>
+        <div class="sbar-small2"></div>
+    </div>
+
+    <div id="side-bar2">
+        <div class="sbar1"></div>
+        <div class="sbar2"></div>
+    </div>
+
+    <div id="side-bar3">
+        <div class="sbar1"></div>
+        <div class="sbar2"></div>
+        <div class="sbar-small1"></div>
+        <div class="sbar-small2"></div>
+    </div>
+
+    <div id="side-bar4">
+        <div class="sbar-small3"></div>
+        <div class="sbar-small4"></div>
+        <div class="sbar1"></div>
+        <div class="sbar2"></div>
+    </div>
+
+    <div id="side-bar5">
+        <div class="sbar-small1"></div>
+        <div class="sbar-small2"></div>
+        <div class="sbar-small1"></div>
+        <div class="sbar-small2"></div>
+    </div>
+</div>
+{% endblock content %}
+
+<!-- BANNER DO FOOTER -->
+{% block banner_footer %}
+<img src="/static/img/img_background/footer_img/banner_footer.svg" id="banner-footer">
+{% endblock banner_footer %}

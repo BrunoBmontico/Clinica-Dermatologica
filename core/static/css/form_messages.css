@@ -1,0 +1,53 @@
+#container-message{
+    width: 100%;
+    height: 70px;
+    margin-top: 80px;
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#content-message{
+    height: 60px;
+    width: 400px;
+    border-radius: 5px;
+    padding-left: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#title-message{
+    text-decoration: underline;
+}
+
+#text-message{
+    font-size: 13px;
+}
+
+.info{
+    background-color: #d8edff;
+    border: solid 2px #6cc3fd;
+}
+
+.debug{
+    background-color: #a03aff60;
+    border: solid 2px #9b2fff93;
+}
+
+.success{
+    background-color: #54ff8d36;
+    border: solid 2px #31fd75b9;
+}
+
+.warning{
+    background-color: #ffdd436b;
+    border: solid 2px #ffd000;
+}
+
+.error{
+    background-color: #ff373760;
+    border: solid 2px #ff3c3c;
+}

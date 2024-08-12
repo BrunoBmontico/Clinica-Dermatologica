@@ -1,0 +1,71 @@
+{% extends 'paciente/base_paciente.html' %}
+{% load static %}
+
+{% block titulo-da-pagina %}
+<div id="titulo-quadro-lateral">Minha conta</div>
+{% endblock titulo-da-pagina %}
+
+{% block quadro-central-e-exames %}
+{% include 'core/form_messages.html' %}
+
+<!-- MODAL DE EDITAR -->
+<div id="qd-central">
+    <div id="header-infos">
+        <ul id="lista-info">
+            <li id="resultado-exames"><a href="{% url 'AreaPaciente' %}" id="link">Resultados de exames</a></li>
+            <li id="consultas"><a href="{% url 'AreaConsulta' %}" id="link">Consultas</a></li>
+            <li id="local"><a href="/paciente/AreaLocal/" id="links">Localização</a></li>
+            <li id="mnh-cnt"><a href="{% url 'view_usuario' id=user.id %}" id="mnh-cnt">Minha Conta</a></li>
+        </ul>
+        
+        {% block modal-edit %}
+        <div id="container-modalEdit" class="edit-closed">
+            <form method="post" action="{% url 'Editar_dados' id=user.id %}" id="modalEdit" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p>Editar Cadastro</p>
+                <input name="img_perfilUsuario" type="file" accept="image/png, image/jpeg" class="input-edit">
+                <input name="Nome_Usuario" value="{{ user.first_name }}" type="text" placeholder="Nome" class="input-edit">
+                <input name="Sobrenome_Usuario" value="{{ user.last_name }}" type="text" placeholder="Sobrenome" class="input-edit">
+                <input name="Telefone_Usuario" value="{{ user.Tel_Usuario }}" type="text" placeholder="Telefone" class="input-edit">
+                <input name="Email_Usuario" value="{{ user.email }}" type="email" placeholder="E-mail" class="input-edit">
+                <input name="CEP_Usuario" value="{{ user.Cep_Usuario }}" type="number" placeholder="CEP" class="input-edit">
+                <input name="Endereco_Usuario" value="{{ user.Endr_Usuario }}" type="text" placeholder="Endereço" class="input-edit">
+                <a class="links-login" href="{% url 'editar_senha' id=user.id %}">Alterar Senha</a>
+                
+                <div>
+                    <button type="submit" id="confirm">Confirmar</button>
+                    <button id="cancel"><a id="cor-btn" href="{% url 'view_usuario' id=user.id %}">Cancelar</a></button>
+                </div>
+            </form>
+        </div>
+        {% endblock modal-edit %}
+
+        <!-- PERFIL USUARIO -->
+        <div id="usuario-conteiner">
+            <div id="usuario">
+                <div id="container-edit">
+                    <button id="editar">editar</button>
+                </div>
+                <div id="container-img">
+                    <div id="img">
+                        {% if user.Img_Usuario %}
+                            <img src="{{ user.Img_Usuario.url }}" id="no_image" class="with_image">
+                        {% else %}
+                            <img src="{% static 'img/img_usuario/no_image.svg' %}" id="no_image">
+                        {% endif %}
+                    </div>
+                </div>
+                <input type="text" value="{{ user.first_name }}" disabled="" class="usuario-input">
+                <input type="text" value="{{ user.last_name }}" disabled="" class="usuario-input">
+                <input type="text" value="{{ user.email }}" disabled="" class="usuario-input">
+                <input type="text" value="{{ user.Data_nsc_Usuario }}" disabled="" class="usuario-input">
+                <input type="text" value="{{ user.get_Sexo_Usuario_display }}" disabled="" class="usuario-input">
+                <input type="text" value="{{ user.Cpf_Usuario }}" disabled="" class="usuario-input">
+                <input type="text" value="{{ user.Tel_Usuario }}" disabled="" class="usuario-input">
+                <input type="text" value="{{ user.Cep_Usuario }}" disabled="" class="usuario-input">
+                <input type="text" value="{{ user.Endr_Usuario }}" disabled="" class="usuario-input number">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock quadro-central-e-exames %}

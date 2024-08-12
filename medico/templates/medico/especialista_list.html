@@ -1,0 +1,161 @@
+{% extends 'medico/base_medico.html' %}
+{% load static %}
+
+{% block content %}
+<div class="mx-auto">          
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+
+<main class="container">
+    <div class="navbar navbar-expand-lg navbar-light">
+        <h3>{{ saudacao }} {{ user.first_name }} {{ user.last_name }}</h3>
+    </div>
+
+    <div class="navbar navbar-expand-lg navbar-light">
+        <div class="col-md-4 d-flex justify-content-center align-items-center">
+            <h4><i class="bi bi-calendar-week"></i> {{ data_atual }}</h4>
+        </div>
+
+        <div class="col-md-3 d-flex justify-content-center align-items-center">
+            <h4>Consultas agendadas:</h4>
+        </div>
+        
+        <div class="col-md-1 d-flex justify-content-center align-items-center">
+            <div style="width: 55px; height: 55px; border-radius: 50%; background-color: #FF7B92; color: pink; text-align: center; line-height: 55px; font-size: 24px;">
+                <a>{{ num_agendadas }}</a>
+            </div>
+        </div>
+        
+        <div class="col-md-1 d-flex justify-content-center align-items-center">
+        </div>
+        
+        <div class="col-md-2 d-flex justify-content-center align-items-center">
+            <h4>Fila de espera:</h4>
+        </div>
+        
+        <div class="col-md-1 d-flex justify-content-center alinhados">
+            <div style="width: 55px; height: 55px; border-radius: 50%; background-color: #FF7B92; color: pink; text-align: center; line-height: 55px; font-size: 24px;">
+                <a>{{ num_esperas }}</a>
+            </div>
+        </div> 
+    </div>
+
+    <div>    
+        {% if consultas_agendadas or consultas_espera %}
+            <div class="container-fluid ">
+                <div class="row d-flex justify-content-center">
+                    <div class="col ">
+                        <div class="card mb-3 ">
+                            <div class="row g-0 d-flex justify-content-center">
+                                <div class="col-md-1 d-flex justify-content-center align-items-center"> 
+                                    <h6 class="card-title"> Foto Paciente </h6> 
+                                    </div>
+                                <div class="col-md-1 d-flex justify-content-center align-items-center">
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h6 class="card-title"> ID Paciente</h6>
+                                    </div>
+                                </div>    
+                                <div class="col-md-3 d-flex justify-content-center align-items-center">
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h6 class="card-title"> Nome Paciente </h6>        
+                                    </div>
+                                </div> 
+                                <div class="col-md-1 d-flex justify-content-center align-items-center">
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h6 class="card-title"> Horário Consulta </h6>
+                                    </div>
+                                </div> 
+                                <div class="col-md-1 d-flex justify-content-center align-items-center">
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h6 class="card-title"> Status Consulta </h6>        
+                                    </div>
+                                </div>
+                                <div class="col-md-2 d-flex justify-content-center align-items-center">
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h6 class="card-title"> Iniciar Consulta </h6>        
+                                    </div>
+                                </div>
+                                <div class="col-md-2 d-flex justify-content-center align-items-center">
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h6 class="card-title"> Cancelar consulta </h6>        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {% for consulta in consultas_agendadas %}
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="card mb-3">
+                            <div class="row g-0 d-flex justify-content-center">
+                                <div class="col-md-1 d-flex justify-content-center align-items-center">
+                                    {% if consulta.Id_Usuario.Img_Usuario %}
+                                        <img src="{{ consulta.Id_Usuario.Img_Usuario.url }}" class="img-fluid rounded-start" alt="img_paciente" style="height: 40px; width: 40px; border-radius: 50%; overflow: hidden;">
+                                    {% else %}
+                                        <img src="{% static 'img/img_usuario/no_image.svg' %}" class="img-fluid rounded-start" alt="img_paciente" style="height: 40px; width: 40px; border-radius: 50%; overflow: hidden;">
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-1 d-flex justify-content-center align-items-center">
+                                    <div class="card-body d-flex justify-content-center">
+                                        <button type="button" class="btn btn-link-offset-1 text-reset text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            {{ consulta.Id_Usuario.id }}
+                                        </button>       
+                                    </div>
+                                </div>
+                                <div class="col-md-3 d-flex justify-content-center align-items-center">
+                                    <div class="card-body d-flex justify-content-center">
+                                        <button type="button" class="btn btn-link-offset-1 text-reset text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            {{ consulta.Id_Usuario.first_name }} {{ consulta.Id_Usuario.last_name }} 
+                                        </button>      
+                                    </div>
+                                </div>
+                                <div class="col-md-1 d-flex justify-content-center align-items-center">
+                                    <div class="card-body d-flex justify-content-center">
+                                        <button type="button" class="btn btn-link-offset-1 text-reset text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            {{ consulta.Data|date:"H:i" }}
+                                        </button>       
+                                    </div>
+                                </div>
+                                <div class="col-md-1 d-flex justify-content-center align-items-center">
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h6 class="card-title">{{ consulta.get_Status_display }}</h6>        
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="card-body d-flex justify-content-center">
+                                        {% if consulta.Status == 'E' %}
+                                            <a class="btn btn-success btn-sm bi bi-check2-circle" href="{% url 'consulta_list' consulta.pk %}"></a>
+                                        {% else %}
+                                            <a class="btn btn-success btn-sm bi bi-check2-circle disabled" href="#"></a>
+                                        {% endif %}
+                                    </div>            
+                                </div>
+                                    <div class="col-md-2 ">
+                                        <div class="card-body d-flex justify-content-center">
+                                            <a class="btn btn-danger btn-sm bi bi-x-circle" href="{% url 'cancelar_agendamento' consulta.pk %}"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        
+        {% else %}
+            <div class="alert alert-warning">
+                Você não tem consultas agendadas.
+            </div>
+        {% endif %}
+        
+    </div>
+{% endblock  %}

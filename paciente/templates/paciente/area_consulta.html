@@ -1,0 +1,69 @@
+{% extends 'paciente/base_paciente.html'%}
+{% load static %}
+
+<!--titulo da pagina ex: Resultado de exames-->
+
+{% block titulo-da-pagina %}<div id="titulo-quadro-lateral">Consultas</div>{% endblock titulo-da-pagina %}
+
+<!--Quadro e lista de informacoes da pagina-->
+{% block remake %}
+
+<div id='posicao-remake' class='remake-closed'>
+    <div id='Remake'>
+        <p id='txt-Remake'>Deseja REAGENDAR a consulta</p>
+        <div>
+            <button id='Sim-remake'>Sim</button>
+            <button id='Nao-remake'>Não</button>
+        </div>
+    </div>
+</div>
+
+{% endblock remake %}
+
+{% block quadro-central-e-exames %}
+
+<div id="qd-central">
+    <div id="header-infos">
+        <ul id="lista-info">
+            <li id="resultado-exames"><a href="{% url 'AreaPaciente' %}" id="links">Resultados de exames</a></li>
+            <li id="consulta">Consultas</li>
+            <li id="local"><a href="/paciente/AreaLocal/" id="links">Localização</a></li>
+            <li id="mnh-cnt"><a href="{% url 'view_usuario' id=user.id %}" id="links">Minha Conta</a></li>
+        </ul>
+        
+    </div>
+    <div id="qd-exames">
+        {% if consultas_paciente %}
+            {% for consulta in consultas_paciente %}
+                <div class="lista-consultas">
+                    <div id="box-branca">
+                        <a href="{% url 'cancelar_consulta' id=consulta.id %}" id="link-cancel"><img src="/static/img/img_geral/icon-del.svg" id="icon-delete" ></a>
+                    </div>
+                    <div id="posicao-txt">
+                        <p id="Medico-txt">Dr. {{ consulta.Medico }}</p>
+                    </div>
+                    <div id="posicao-especialidade">
+                        <p id="especialidade">{{ consulta.Especialidade }}</p>
+                    </div>
+                    <div id="data-box">
+                        <p id="data-txt">{{ consulta.Data }}</p>
+                        <p id="status-txt">{{ consulta.get_Status_display }}</p>
+                    </div>
+                </div>
+            
+            {% endfor%}
+        {% else %}
+            <div class="lista-consultas">
+                <div id="posicao-aviso-txt">
+                    <p id="aviso-txt">Você ainda não tem consultas agendadas no momento</p>
+                </div>
+            </div>
+        {% endif %}
+
+        <div id="btn_add">
+            <a href="{% url 'agendar_consulta' id=user.id %}" id="button"><img src="/static/img/img_geral/add.svg" alt="" id="img-button" ></a>
+        </div>
+    </div>
+</div>
+
+{% endblock quadro-central-e-exames %}

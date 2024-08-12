@@ -1,0 +1,34 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+<!-- isso faz com que o header tenha a animação necessaria apenas na homepage -->
+{% block isHomePage %}
+<script>
+    let isHomePage = false;
+</script>
+{% endblock isHomePage %}
+
+<!-- define o tamanho do header dependendo da pagina -->
+{% block heigth_header %} header_scrolled {% endblock heigth_header %}
+
+{% block content %}
+
+{% include 'core/form_messages.html' %}
+
+<!--login-->
+<div id="cadastro-conteiner">
+    <form id="cadastro" action="{% url 'editar_senha' id=user.id %}" method="POST">
+        {% csrf_token %}
+        <p id="title-cadastro">Alterar Senha</p>
+        <input name="Senha_Antiga_Usuario" type="password" placeholder="Senha Antiga" class="cadastro-input">
+        <input name="Password" type="password" placeholder="Senha Nova" class="cadastro-input">
+        <input name="Password_Confirm" type="password" placeholder="Confirmar Senha" class="cadastro-input">
+
+        <button  type="submit" id="cadastrar">Confirmar</button>
+    </form>
+</div>
+{% endblock content %}
+
+{% block banner_footer %}
+<img src="/static/img/img_cadastro/banner_footer.svg" id="banner-footer">
+{% endblock banner_footer %}

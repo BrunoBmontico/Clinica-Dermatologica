@@ -1,0 +1,80 @@
+/*AGENDAMENTO*/
+#agendamento-container{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+}
+
+#agendamento{
+    background-color: var(--branco);
+    border: 3px solid var(--rosaClaro);
+    box-shadow: -7px 7px 0px 0px var(--rosaForte);
+    position: absolute;
+    margin-top: 100px;
+    width: 500px;
+    height: 700px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#container-title{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#title-agendamento{
+    font-size:  30px;
+    color: var(--roxo);
+}
+
+#container-agendamento{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;   
+}
+
+.select,
+#data{
+    border: 2px solid var(--rosaEscuro);
+    color: #a1a1a1;
+    outline: none;
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+    display: flex;
+}
+
+#title-select{
+    display: none;
+}
+
+.proc-option{
+    appearance: none;
+    text-align: start;
+    color: #000000;
+}
+
+#btn-agendar{
+    background-color: var(--rosaMedio);
+    color: var(--branco);
+    border-radius: 5px;
+    border: none;
+    font-size: 20px;
+    width: 200px;
+    height: 50px;
+}
+
+#btn-agendar:hover{
+    cursor: pointer;
+    box-shadow: -4px 4px 0px 0px var(--rosaForte);
+    transition: all .2s ease-in-out;
+}

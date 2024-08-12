@@ -1,0 +1,495 @@
+/* BTN PRA SUBIR A PAGINA */
+#container-btnup{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 2;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+#btnup{
+    background-color: var(--rosaMedio);
+    border: solid 10px var(--rosaFundo);
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    margin: 20px 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
+#img-btnup{
+    width: 60px;
+    height: 60px;
+}
+
+
+/*MENU DE SERVIÇOS*/
+#servs {
+    display: flex;
+    justify-content: center;
+    padding-top: 600px;
+}
+
+.menu-serv {
+    height: 400px;
+    width: 1400px;
+    border: 3px solid var(--rosaClaro);
+    background-color: var(--branco);
+    box-shadow: -13px 13px 0px 0px var(--rosaForte);
+
+    z-index: 99;
+}
+
+/*TITULO SERVIÇOS*/
+#title-serv {
+    list-style: square;
+    color: var(--roxo);
+    font-size: 40px;
+    margin: 10px 40px;
+}
+
+/*SERVIÇOS BTN*/
+#btns-serv {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 40px;
+}
+
+.serv {
+    width: 230px;
+    height: 200px;
+    border-radius: 25px 25px 25px 0px;
+    border: 3px solid var(--rosaMedio);
+    background: url(/static/img/img_homePage/wave.svg) no-repeat bottom;
+    display: flex;
+    justify-content: center;
+}
+
+.serv:hover {
+    box-shadow: -7px 7px 0px 0px var(--rosaForte);
+}
+
+.img-serv {
+    position: absolute;
+    margin-top: 8px;
+}
+
+.anchor {
+    width: 220px;
+    height: 190px;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.title-btn {
+    color: var(--branco);
+    font-size: 20px;
+}
+
+/*APRESENTAÇÃO*/
+#apresentacao {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 200px;
+}
+
+#title-ap {
+    width: 860px;
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--rosaForte);
+}
+
+/*DESCRIÇÕES*/
+#descs {
+    margin-top: 80px;
+    display: flex;
+    gap: 80px;
+}
+
+.desc {
+    width: 340px;
+    height: 300px;
+    border: 3px solid var(--rosaClaro);
+    background-color: var(--branco);
+    box-shadow: -13px 13px 0px 0px var(--rosaForte);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-desc {
+    list-style: square;
+    color: var(--roxo);
+    font-size: 35px;
+    margin: 10px;
+}
+
+.text-desc {
+    margin-top: 15px;
+    width: 270px;
+    font-size: 24px;
+    color: var(--rosaMedio);
+}
+
+.text-desc,
+.title-desc,
+#title-ap,
+#title-serv {
+    cursor: default;
+}
+
+/*BARRA FUNDO*/
+#bar1 {
+    margin-top: 130px;
+    background-color: var(--rosaEscuro);
+    width: 100%;
+    height: 200px;
+}
+
+#bar2 {
+    background-color: var(--rosaMedio);
+    width: 100%;
+    height: 100px;
+    box-shadow: 0px 90px 0px 0px var(--rosaClaro);
+}
+
+/*BARRAS LATERAIS*/
+#side-bar1,
+#side-bar2,
+#side-bar3,
+#side-bar4,
+#side-bar5 {
+    position: absolute;
+    z-index: 0;
+}
+
+#side-bar1 {
+    top: 160rem;
+    left: 6.5rem;
+}
+
+#side-bar2 {
+    top: 200rem;
+    right: 6.5rem;
+}
+
+#side-bar3 {
+    top: 250rem;
+    left: 6.5rem;
+}
+
+#side-bar4 {
+    top: 270rem;
+    right: 6.5rem;
+}
+
+#side-bar5 {
+    top: 350rem;
+    left: 6.5rem;
+}
+
+.sbar1 {
+    background-color: var(--rosaEscuro);
+    width: 25px;
+    height: 510px;
+}
+
+.sbar2 {
+    background-color: var(--rosaMedio);
+    width: 25px;
+    height: 150px;
+    box-shadow: 0px 100px 0px 0px var(--rosaClaro);
+}
+
+.sbar-small1 {
+    background-color: var(--rosaEscuro);
+    margin-top: 8rem;
+    width: 25px;
+    height: 60px;
+}
+
+.sbar-small3 {
+    background-color: var(--rosaEscuro);
+    width: 25px;
+    height: 60px;
+}
+
+.sbar-small2,
+.sbar-small4 {
+    background-color: var(--rosaMedio);
+    margin-bottom: 8rem;
+    width: 25px;
+    height: 25px;
+    box-shadow: 0px 25px 0px 0px var(--rosaClaro);
+}
+
+/*ANCHOR*/
+#spa,
+#espaco-beleza,
+#derma,
+#estetica {
+    display: flex;
+    justify-content: center;
+    height: 60rem;
+    align-items: center;
+}
+
+#spa {
+    margin-top: 70px;
+}
+
+/*CONTEUDO SERVIÇOS*/
+.content {
+    height: 670px;
+}
+
+#img-content {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    margin: 10px 10px;
+}
+
+#title-content {
+    position: absolute;
+    color: var(--roxo);
+    font-size: 40px;
+    margin: 30px 120px;
+}
+
+.btns-content {
+    display: flex;
+    justify-content: center;
+    margin: 140px 0;
+    gap: 50px;
+}
+
+#btn {
+    border: 3px solid var(--rosaMedio);
+    border-radius: 25px 25px 25px 0px;
+    width: 270px;
+    height: 390px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+#btn:hover {
+    box-shadow: -7px 7px 0px 0px var(--rosaForte);
+}
+
+#display-bottom {
+    background-color: var(--rosaMedio);
+    border-radius: 0px 0px 25px 0px;
+    height: 180px;
+    width: 270px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+.line {
+    background-color: var(--branco);
+    width: 230px;
+    height: 3px;
+}
+
+#line {
+    width: 230px;
+    height: 110px;
+    border-bottom: 3px solid var(--branco);
+    border-top: 3px solid var(--branco);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#name-serv {
+    color: var(--branco);
+    font-size: 30px;
+}
+
+#hour,
+#serv-title {
+    color: var(--branco);
+    font-size: 28px;
+}
+
+#serv-list {
+    color: #560F47;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    margin: 30px;
+    gap: 10px;
+    font-size: 15px;
+}
+
+/*RESPONSIVIDADE*/
+@media (max-width: 1750px){
+    /*BARRAS LATERAIS*/
+    #side-bar1,
+    #side-bar2,
+    #side-bar3,
+    #side-bar4,
+    #side-bar5 {
+        display: none;
+    }
+
+    /* BTN PRA SUBIR A PAGINA */
+    #btnup{
+        border: solid 7px var(--rosaFundo);
+        width: 90px;
+        height: 90px;
+        margin: 20px 5px;
+    }
+
+    #img-btnup{
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 1500px){
+    /*serviços*/
+    #servs {
+        padding-top: 400px;
+    }
+
+    .menu-serv {
+        width: 1100px;
+    }
+
+    /*titulo serviços*/
+    #title-serv {
+        font-size: 35px;
+        margin: 10px 40px;
+    }
+
+    /*serviços btn*/
+    #btns-serv {
+        gap: 20px;
+    }
+
+    .serv {
+        width: 220px;
+        height: 170x;
+    }
+
+    /*APRESENTAÇÃO*/
+    #apresentacao {
+        margin-top: 150px;
+    }
+
+    /*dESCRIÇOES*/
+    #descs{
+        gap: 60px;
+    }
+
+    .desc{
+        width: 300px;
+        height: 300px;
+    }
+
+    .title-desc {
+        font-size: 30px;
+    }
+
+    .text-desc {
+        margin-top: 10px;
+    }
+
+    /*BARRA FUNDO*/
+    #bar1 {
+        height: 100px;
+    }
+
+    #bar2 {
+        height: 50px;
+        box-shadow: 0px 50px 0px 0px var(--rosaClaro);
+    }
+
+    /*ANCHOR*/
+    #spa,
+    #espaco-beleza,
+    #derma,
+    #estetica {
+        height: 50rem;
+    }
+
+    #spa {
+        margin-top: 0;
+    }
+
+    /*CONTEUDO SERVIÇOS*/
+    .content {
+        height: 500px;
+    }
+
+    #img-content{
+        width: 90px;
+        height: 90px;
+    }
+
+    #title-content {
+        font-size: 35px;
+        margin: 30px 110px;
+    }
+
+    .btns-content{
+        gap: 30px;
+        margin: 130px 0;
+    }
+
+    #btn{
+        width: 230px;
+        height: 300px;
+    }
+
+    #display-bottom{
+        height: 90px;
+        width: 101%;
+    }
+
+    #line {
+        width: 200px;
+        height: 60px;
+    }
+
+    #name-serv {
+        font-size: 20px;
+    }
+
+    #hour,
+    #serv-title {
+        font-size: 20px;
+    }
+
+    #serv-list{
+        height: 100px;
+        margin-bottom: 70px;
+        font-size: 13px;
+    }
+}

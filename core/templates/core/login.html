@@ -1,0 +1,37 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+<!-- isso faz com que o header tenha a animação necessaria apenas na homepage -->
+{% block isHomePage %}
+<script>
+    let isHomePage = false;
+</script>
+{% endblock isHomePage %}
+
+<!-- define o tamanho do header dependendo da pagina -->
+{% block heigth_header %} header_scrolled {% endblock heigth_header %}
+
+{% block content %}
+
+{% include 'core/form_messages.html' %}
+
+<!--login-->
+<div id="cadastro-conteiner">
+    <form id="cadastro" action="{% url 'pagina_login' %}" method="POST">
+        {% csrf_token %}
+        <p id="title-cadastro">Login</p>
+        <input type="email" name="Email_Usuario" placeholder="E-mail" class="cadastro-input">
+        <input type="password" name="Senha_Usuario" placeholder="Senha" class="cadastro-input">
+        <button type="submit" id="cadastrar">Logar</button>
+        {% comment %} {% if user.is_authenticated %}
+            <div class="logged-in-message">
+                Você já está logado. <a class="cor-btn" href="{% url 'AreaPaciente' id=user.id %}">Ir para a área do paciente</a>
+            </div>
+        {% endif %} {% endcomment %}
+    </form>
+</div>
+{% endblock content %}
+
+{% block banner_footer %}
+<img src="/static/img/img_cadastro/banner_footer.svg" id="banner-footer">
+{% endblock banner_footer %}

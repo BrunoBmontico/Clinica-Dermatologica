@@ -1,0 +1,45 @@
+{% extends 'paciente/base_paciente.html'%}
+{% load static %}
+
+<!--titulo da pagina ex: Resultado de exames-->
+{% block titulo-da-pagina %}
+
+<div id="titulo-quadro-lateral">Resultado de exames</div>
+
+{% endblock titulo-da-pagina %}
+
+{% block quadro-central-e-exames %}
+
+<!--Barra de navegacao do paciente-->
+<div id="qd-central">
+    <div id="header-infos">
+        <ul id="lista-info">
+            <li id="resultado-exames">Resultados de exames</li>
+            <li id="consulta"><a href="{% url 'AreaConsulta' %}" id="links">Consultas</a></li>
+            <li id="local"><a href="/paciente/AreaLocal/" id="links">Localização</a></li>
+            <li id="mnh-cnt"><a href="{% url 'view_usuario' id=user.id %}" id="links">Minha Conta</a></li>
+        </ul>
+    </div>
+
+    <div id="qd-exames">
+        <!--Quadro de informacoes da pagina-->
+            
+            <div id="container-info" class="info-open">  
+                <div id="content-info">
+                    <div class="container-campo">
+                        <label class="txt-conteiner">Prontuário:</label>
+                        <textarea name="prontuario" class="campo-info">{{ consulta.Prontuario }}</textarea>
+                    </div>
+                        
+                    <div class="container-campo">
+                        <label class="txt-conteiner">Receita:</label>
+                        <textarea name="receita" class="campo-info">{{ consulta.Receita }}</textarea>
+                    </div>
+                </div>
+            </div>
+
+            
+    </div>
+</div>
+
+{% endblock quadro-central-e-exames %}

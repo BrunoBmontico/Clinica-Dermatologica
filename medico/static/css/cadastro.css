@@ -1,0 +1,77 @@
+/*CADASTRO*/
+#cadastro-conteiner{
+    height: 400px;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cadastro{
+    background-color: var(--branco);
+    border: 3px solid var(--rosaClaro);
+    box-shadow: -7px 7px 0px 0px var(--rosaForte);
+    width: 550px;
+    height: auto;
+
+    position: absolute;
+    margin-top: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#title-select{
+    display: none;
+}
+
+#title-cadastro{
+    font-size: 30px;
+    color: var(--roxo);
+    margin: 30px;
+}
+
+.cadastro-input{
+    width: 300px;
+    height: 40px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 2px solid var(--rosaEscuro);
+    outline: none;
+    padding: 5px; /* posiciona os placehoders dos inputs */
+    margin: 8px;
+}
+
+.number::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+
+#cadastrar{
+    color: var(--branco);
+    background-color: var(--rosaMedio);
+    font-size: 20px;
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    margin: 30px;
+    cursor: pointer;
+}
+
+#cadastrar:hover{
+    box-shadow: -4px 4px 0px 0px var(--rosaForte);
+    transition: all .2s ease-in-out;
+}
+
+/*RESPONSIVIDADE*/
+@media (max-width: 1400px){
+    /*cadastro*/
+    #cadastro-conteiner{
+        height: 700px;
+    }
+
+    #cadastro{
+        margin-top: 350px;
+    }
+}

@@ -1,0 +1,321 @@
+#titulo-quadro-lateral{
+
+    font-size: 25px;
+    color:  #BEBEBE;
+    padding-left: 100px;
+    padding-bottom: 60px;
+    
+}
+
+#body-principal{
+    display: flex;
+    
+}
+
+#header-infos{
+
+    background-color: #FFCED6;
+    height: 70px;
+    width: 100%;
+    align-items: center;
+
+}
+
+#lista-info{
+
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    list-style: none;
+    gap: 10%;
+    font-size: 20px;
+
+}
+
+#qd-exames{
+
+    display: flex;
+    background-color: #f7e6e9;
+    width: 100%;
+    height: 970px;
+    align-items: center;
+    padding-top: 40px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#consulta{
+    color: #FF7B92;
+
+}
+.lista-consultas{
+    display: flex;
+    align-items: center;
+    width: 1000px;
+    height: 85px;
+    background-color: var(--branco);
+    border-left: 8px solid var(--rosaMedio);
+}
+#box-branca{
+
+    height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#posicao-txt{
+
+    border-left: 2px solid var(--rosaClaro);
+    border-right: 2px solid var(--rosaClaro);
+    padding-left: 15px;
+    padding-right: 350px;
+    width: 360px;
+}
+#posicao-aviso-txt{
+
+    padding-left: 15px;
+    width:100%;
+    text-align: center;
+}
+
+
+
+#data-txt{
+
+    color: #949494;
+    
+}
+
+#status-txt{
+
+    color: #949494;
+    
+}
+
+#Medico-txt{
+
+    color: var(--rosaMedio);
+    font-size: 25px;
+    width: 300px;
+
+}
+
+#aviso-txt{
+
+    color:#a9a9a9;
+    font-size: 20px;
+
+}
+
+#posicao-especialidade{
+
+    align-items: center;
+    
+}
+
+#especialidade{
+
+    padding-left: 15px;
+    font-size: 20px;
+}
+
+#data-box{
+
+    display: flex;
+    align-items: center;
+    padding-left: 100px;
+    color: #BEBEBE;
+    flex-direction: column;
+}
+
+#btn_add{
+
+    display: flex;
+    padding-left: 80%
+    
+}
+
+#button{
+
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#links{
+    color: #fff;
+}
+
+#icon-delete{
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+#posicao-confirm, #posicao-remake{
+
+    background-color: #00000073;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 99;
+
+}
+
+.confirm-closed, .remake-closed{
+    display: none;
+}
+
+.confirm-open, .remake-open{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#Confirmacao, #Remake{
+
+    background-color: #f7e6e9;
+    width: 300px;
+    height: 200px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+#txt-confirm, #txt-remake{
+
+    font-size: medium;
+    width: 200px;
+    padding-bottom: 20px;
+}
+
+#Sim, #Sim-remake{
+
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #FF7B92;
+    width: 60px;
+    height: 30px;
+    font-size: medium;
+    cursor: pointer;
+}
+
+#Nao, #Nao-remake{
+
+    border: 2px solid #FF7B92;
+    border-radius: 10px;
+    color: #FF7B92;
+    background-color: #ffffff00;
+    width: 60px;
+    height: 30px;
+    font-size: medium;
+    cursor: pointer;
+}
+
+
+
+/* ---------------------------------MEDIA--------------------------------------- */
+
+
+@media(max-width: 1500px){
+
+    *{
+        font-size: medium;
+    }
+
+    #qd-exames{
+        width: 1100px;
+        display: flex;
+        padding: 0px;
+        align-items: center;
+        padding-top: 20px;
+        font-size: medium;
+
+    }
+
+    #header-infos{
+        width: 100%;
+    }
+
+
+    #titulo-quadro-lateral{
+
+        padding-left: 10%;
+        font-size: medium;
+        padding-bottom: 10%;
+    }
+
+
+    #data-txt{
+        font-size: small;
+    }
+
+    #Medico-txt{
+        font-size: larger;
+    }
+    #img-exame{
+        width: 80%; 
+        height: 80%;
+    }
+
+    .lista-consultas{
+
+        margin-right: 15%;
+        margin-left: 50px;
+        width: 1000px;
+    }
+
+    #btn_add{
+        display: flex;
+        padding-left: 82%;
+        padding-top: 1.5%;
+
+        width: 100px;
+        height: 85px;
+    }
+
+    #button{
+        width: 10px;
+        height: 10px;
+    }
+
+    #img-button{
+        height: 50px;
+        width: 50px;
+    }
+
+
+    #data-box{
+
+        padding-left: 180px;
+    }
+    
+    #posicao-txt{
+        padding: 5px;
+        width: 300px;
+        margin-left: 20px;
+    }
+
+    #icon-delete{
+
+        margin-left: 20px;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+    }
+    
+    #icon-reload{
+        
+        margin-right: 20px;
+        width: 50%;
+        height: 50%;
+    }
+}

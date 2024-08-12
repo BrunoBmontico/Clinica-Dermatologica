@@ -1,0 +1,47 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+<!-- isso faz com que o header tenha a animação necessaria apenas na homepage -->
+{% block isHomePage %}
+<script>
+    let isHomePage = false;
+</script>
+{% endblock isHomePage %}
+
+<!-- define o tamanho do header dependendo da pagina -->
+{% block heigth_header %} header_scrolled {% endblock heigth_header %}
+
+{% block content %}
+
+{% include 'core/form_messages.html' %}
+
+<!--CADASTRO-->
+<div id="cadastro-conteiner">
+    <form id="cadastro" action="{% url 'cadastrar_usuario' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p id="title-cadastro">Cadastro</p>
+        <input type="text" name="Nome_Usuario" placeholder="Nome" class="cadastro-input">
+        <input type="text" name="Sobrenome_Usuario" placeholder="Sobrenome" class="cadastro-input">
+        <input type="tel" name="Tel_Usuario" placeholder="Telefone" class="cadastro-input">
+        <input type="email" name="Email_Usuario" placeholder="E-mail" class="cadastro-input">
+        <input type="password" name="Senha_Usuario" placeholder="Senha" class="cadastro-input">
+        <input type="date" name="Data_nsc_Usuario" class="cadastro-input">
+        <select name="Sexo_Usuario" class="cadastro-input">
+            <option id="title-select">Sexo</option>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+        </select>
+        <input type="number" name="Cep_Usuario" placeholder="CEP" class="cadastro-input number">
+        <input type="text" name="Endr_Usuario" placeholder="Endereço" class="cadastro-input">
+        <input type="number" name="Cpf_Usuario" placeholder="CPF" class="cadastro-input number">
+        <input type="file" name="Img_Usuario" class="cadastro-input">
+
+        <button type="submit" id="cadastrar">Cadastrar</button>
+
+    </form>
+</div>
+{% endblock content %}
+
+{% block banner_footer %}
+<img src="/static/img/img_cadastro/banner_footer.svg" id="banner-footer">
+{% endblock banner_footer %}

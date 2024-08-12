@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- link do css do background -->
+    <link rel="stylesheet" href="{% static 'css/base_paciente.css' %}">
+    <script src="{% static 'js/base_paciente.js' %}" defer></script>
+     
+    <!-- link css das outras paginas -->
+    <link rel="stylesheet" href="{% static 'css/resultado_exames.css' %}">
+    <link rel="stylesheet" href="{% static 'css/area_consulta.css' %}">
+    <link rel="stylesheet" href="{% static 'css/area_local.css' %}">
+
+    <script src="{% static 'js/area_consulta.js' %}" defer></script>
+    
+     <!-- link do perfil do usuario -->
+    <link rel="stylesheet" href="{% static 'css/perfil_usuario.css' %}">
+    <script src="{% static 'js/perfil_usuario.js' %}" defer></script>
+
+    <!-- link do messages form -->
+    <link rel="stylesheet" href="{% static 'css/form_messages.css' %}">
+    <title>Área do Paciente</title>
+
+</head>
+<body>
+    
+<!-- loader da paginas -->
+<div id="preloader"></div>
+
+{% block modal-edit %}
+{% endblock modal-edit %}
+
+{% block info %}
+{% endblock info %}
+
+
+<!-- Header -->
+<header class="header_home">
+    <img src="/static/img/img_geral/logo-header.svg" logo_PinkDiamond id="logo_pink">
+    <ul id="menu">
+        <li><a href="/" class="cor_nav">Inicio</a></li>
+        <li><a href="{% url 'logout_usuario' %}" class="cor_nav">Logout</a></li>
+        {% if user.Img_Usuario %}
+            <a id="perfil"><img src="{{ user.Img_Usuario.url }}" id="img-header"></a>
+        {% else %}
+            <a id="perfil"><img src="{% static 'img/img_usuario/no_image.svg' %}" id="img-header"></a>
+        {% endif %}
+    </ul>
+</header>
+
+<div id="body-principal">
+    <!--Quadro branco lateral-->
+
+    <div id="lateral-branca">
+        <div class="quadro-lateral">
+
+            <!--titulo da pagina ex: Resultado de exames-->
+            {% block titulo-da-pagina %}
+            {% endblock titulo-da-pagina %}
+
+            <div id="texto-quadro-lateral">{{ user.first_name }} {{ user.last_name }}</div>  
+        </div>
+        
+    </div>
+
+    <!--Quadros e listas de consultas-->
+
+    {% block quadro-central-e-exames %}
+    {% endblock quadro-central-e-exames %}
+
+</div>
+<!-- FOOTER -->
+<footer id="footer-home">
+
+    <div id="footer">
+        <div id="sobre-nos">
+            <img src="/static/img/img_geral/logo-footer (1).svg" id="logo-footer">
+            <p id="sb-text">
+                Sobre nós:
+                <br>
+                <br>
+                A Pink Diamond Skin Care foi criada para oferecer um ambiente
+                descontraído e desconexo da agitação da metrópole,
+                onde você pode relaxar e cuidar da sua pele e bem-estar.
+            </p>
+        </div>
+        <div id="nossas-redes">
+            <p>Nossas Redes:</p>
+            <div id="redes">
+                <a href="https://www.instagram.com"><img src="/static/img/img_geral/instagram.svg"></a>
+                <a href="https://twitter.com"><img src="/static/img/img_geral/twitter.svg"></a>
+                <a href="https://www.facebook.com"><img src="/static/img/img_geral/facebook.svg"></a>
+            </div>
+        </div>
+        <div id="contato">
+            <ul id="contato-lista">
+                <p>Contato:</p>
+                <li>Rua Coelho Lisboa, 538 - Tatuapé, São paulo - Sp</li>
+                <li>Telefone: 11 2256-4040</li>
+                <li>E-mail: atendimento@pinkdiamond.com.br</li>
+                <li>Horário de funcionamento:</li>
+                <li>Segunda à Sexta das 08:00 às 20:00</li>
+                <li>Sábados das 08:00 às 18:00 </li>
+            </ul>
+        </div>
+
+    </div>
+</footer>
+    
+
+</body>
+</html>

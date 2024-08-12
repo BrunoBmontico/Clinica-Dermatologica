@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- links do background estatico -->
+    <link rel="stylesheet" href="{% static 'css/base_medico.css' %}">
+    <script src="{% static 'js/base_medico.js' %}" defer></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<footer id="footer-home">
+    <img src="/static/img/img_cadastro/banner_footer.svg" id="banner-footer">
+</footer>
+
+<body>
+    <!-- LOADER DA PAGINA -->
+    <div id="preloader"></div>
+    
+    <!-- HEADER PRINCIPAL DA PAGINA -->
+    <header class="header_home ">
+        <img src="/static/img/img_background/header_img/logo-header.svg" logo_PinkDiamond id="logo_pink">
+        <ul id="menu">
+            <li><a href="/" class="cor_nav">Inicio</a></li>
+            <li><a href="{% url 'logout_usuario' %}" class="cor_nav">Logout</a></li>
+            <a href="#" id="perfil">
+                {% if user.Img_Usuario %}
+                    <img src="{{ user.Img_Usuario.url }}" alt="Foto Funcionário" id="img-header">
+                {% else %}
+                    <img src="{% static 'img/img_usuario/no_image.svg' %}" alt="Foto Funcionário" id="img-header">
+                {% endif %}
+            </a>
+        </ul>
+    </header>
+    <!-- CONTEUDO DA PAGINA -->
+
+    {% block content %}
+    {% endblock content %}
+
+    <!-- FIM DO CONTEUDO DA PAGINA -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+
+</body>
+</html>

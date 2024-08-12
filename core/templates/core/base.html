@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- links do background estatico -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <script src="{% static 'js/base.js' %}" defer></script>
+    <!-- link da homepage(pqno script no final da pagina para verificar se é home page) -->
+    <link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+    <!-- link do agendamento -->
+    <link rel="stylesheet" href="{% static 'css/agendamento.css' %}">
+    <!-- link do cadastro -->
+    <link rel="stylesheet" href="{% static 'css/cadastro.css' %}">
+    <!-- link do messages form -->
+    <link rel="stylesheet" href="{% static 'css/form_messages.css' %}">
+    <title>Home Page</title>
+</head>
+<body>
+    <!-- LOADER DA PAGINA -->
+    <div id="preloader"></div>
+
+    <!-- BANNER DA HOME-PAGE -->
+    {% block banner_header %}
+    {% endblock banner_header %}
+    
+    <!--HEADER PRINCIPAL DA PAGINA-->
+    <header class="{% block heigth_header %}{% endblock heigth_header %}">
+        <img src="/static/img/img_background/header_img/logo-header.svg" alt="logo_PinkDiamond" id="logo_pink">
+        <ul id="menu">
+            <li><a href="/" class="cor_nav">Inicio</a></li>
+
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'agendar_consulta' id=user.id %}" class="cor_nav">Agendamento</a></li>
+
+                {% if user.especialista %}
+                    <li><a href="{% url 'especialista' %}" class="cor_nav">Atendimento</a></li>
+                {% endif %}
+
+                {% if user.is_staff %}
+                    <li><a class="cor_nav" type="submit" href="/medico/cadastro_especialista/" id="btn_cad_esp">Cadastro Especialista</a></li>
+                    <li><a href="/admin/" class="cor_nav">Admin</a></li>
+                {% else %}
+                    <li><a href="{% url 'view_usuario' id=user.id %}" class="cor_nav">Seu Perfil</a></li>
+                {% endif %}
+
+                {% if user.Img_Usuario %}
+                <a id="perfil"><img src="{{ user.Img_Usuario.url }}" id="img-header"></a>
+                {% else %}
+                <a id="perfil"><img src="{% static 'img/img_usuario/no_image.svg' %}" id="img-header"></a>
+                {% endif %}
+            {% else %}
+                <li><a href="/login/" class="cor_nav">Agendamento</a></li>
+                <li><a href="/cadastro/" class="cor_nav">Cadastro</a></li>
+                <li><a href="#open-login" class="cor_nav" id="open-login">Login</a></li>
+                <a id="perfil"><img src="/static/img/img_background/header_img/no_image.svg" id="img-header"></a>
+            {% endif %}
+        </ul>
+    </header>
+
+    <!--MODAL LOGIN-->
+    <div id="container-modal">
+        <form action="{% url 'logar_usuario' %}" method="POST" id="login-modal" class="closed-modal">
+            {% csrf_token %}
+            <p id="title-login">Login</p>
+            <input name="Email_Usuario" type="email" placeholder="E-mail" class="login-input">
+            <input name="Senha_Usuario" type="password" placeholder="Senha" class="login-input">
+            <div>
+                <input type="checkbox" id="manter-conn">
+                <label for="manter-conn" id="label-manter-conn">Me manter conectado</label>
+            </div>
+            {% if user.is_authenticated %}
+                <button type="submit" id="Entrar">Entrar</button>
+            {% else %}
+                <button type="submit" id="Entrar">Entrar</button>
+            {% endif %}
+            <a href="#" class="links-login">Esqueci minha Senha.</a>
+            <a href="/cadastro/" class="links-login">Não tem uma conta? Se cadastre aqui.</a>
+        </form>
+    </div>
+
+    <!-- CONTEUDO DA PAGINA -->
+
+    {% block content %}
+    {% endblock content %}
+
+    <!-- FIM DO CONTEUDO DA PAGINA -->
+
+    <!-- FOOTER -->
+    <footer id="footer-home">
+
+        {% block banner_footer %}
+        {% endblock banner_footer %}
+
+        <div id="footer">
+            <div id="sobre-nos">
+                <img src="/static/img/img_background/footer_img/logo-footer.svg" id="logo-footer">
+                <p id="sb-text">
+                    Sobre nós:
+                    <br>
+                    <br>
+                    A Pink Diamond Skin Care foi criada para oferecer um ambiente
+                    descontraído e desconexo da agitação da metrópole,
+                    onde você pode relaxar e cuidar da sua pele e bem-estar.
+                </p>
+            </div>
+            <div id="nossas-redes">
+                <p>Nossas Redes:</p>
+                <div id="redes">
+                    <a href="https://www.instagram.com"><img src="/static/img/img_background/footer_img/instagram.svg"></a>
+                    <a href="https://twitter.com"><img src="/static/img/img_background/footer_img/twitter.svg"></a>
+                    <a href="https://www.facebook.com"><img src="/static/img/img_background/footer_img/facebook.svg"></a>
+                </div>
+            </div>
+            <div id="contato">
+                <ul id="contato-lista">
+                    <p>Contato:</p>
+                    <li>Rua Coelho Lisboa, 538 - Tatuapé, São paulo - Sp</li>
+                    <li>Telefone: 11 2256-4040</li>
+                    <li>E-mail: atendimento@pinkdiamond.com.br</li>
+                    <li>Horário de funcionamento:</li>
+                    <li>Segunda à Sexta das 08:00 às 20:00</li>
+                    <li>Sábados das 08:00 às 18:00 </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+<!-- isso faz com que o header tenha a animação necessaria apenas na homepage -->
+{% block isHomePage %}
+{% endblock isHomePage %}
+</html>

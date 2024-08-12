@@ -1,0 +1,132 @@
+{% extends 'medico/base_medico.html' %}
+{% load static %}
+
+{% block content %}
+<div class="mx-auto">          
+    <br><br><br>
+</div>
+
+{% if paciente %}
+<main class="container">
+    <div class="navbar navbar-expand-lg navbar-light">
+        <div class="col-md-4 d-flex justify-content-center align-items-center">
+            <div class="card-body">
+                <h3 class="card-title"> 
+                <div class="col-md-3 d-flex justify-content-center align-items-center">
+                    {% if paciente.Img_Usuario %}
+                        <img src="{{ paciente.Img_Usuario.url }}" class="img-fluid rounded-circle" alt="img_paciente" style="height: 80px; width: 80px; border-radius: 100%; overflow: hidden;">
+                    {% else %}
+                        <img src="{% static 'img/img_usuario/no_image.svg' %}" class="img-fluid rounded-circle" alt="img_paciente" style="height: 80px; width: 80px; border-radius: 100%; overflow: hidden;">
+                    {% endif %}
+                </div>
+
+                 {{ paciente.first_name }} {{ paciente.last_name }} <div class="col-md-4 d-flex justify-content-center align-items-center">
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="container-fluid">
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active border border-white" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" style="color: hotpink; background-color: pink;">Prontuário</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link border border-white" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" style="color: hotpink; background-color: pink;">Receituário</button>
+        </li>
+        {% comment %} <li class="nav-item" role="presentation">
+            <button class="nav-link border border-pink" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" style="color: white; background-color: pink;">Exames</button>
+        </li> {% endcomment %}
+    </ul>
+</main>    
+<div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <form method="post" action="{% url 'salvar_prontuario' object.id %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <textarea class="form-control" name="prontuario" id="exampleFormControlTextarea1" rows="15">{{ object.Prontuario }}</textarea>
+            </div>
+            <div class="card-body">
+                <button type="submit" class="btn btn-success btn-sm bi bi-check2-circle"> Salvar Prontuário</button>
+                <a class="btn btn-danger btn-sm bi bi-x-circle" href="{% url 'finalizar_consulta' object.pk %}"> Finalizar Consulta </a>
+            </div>
+        </form>
+    </div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <form method="post" action="{% url 'salvar_receituario' object.id %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <textarea class="form-control" name="receituario" id="exampleFormControlTextarea2" rows="15">{{ object.Receita }} </textarea>
+            </div>
+            <div class="card-body">
+                <button type="submit" class="btn btn-success btn-sm bi bi-check2-circle"> Salvar Receituário </button>
+                
+            </div>
+        </form>
+    </div>
+    
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-1 d-flex justify-content-center align-items-center">
+                                <div class="card-body">
+                                    <h6 class="card-title"> Foto </h6>
+                                </div>
+                            </div>
+                            <div class="col-md-2 d-flex justify-content-center align-items-center">
+                                <div class="card-body">
+                                    <h6 class="card-title"> ID </h6>
+                                </div>
+                            </div>    
+                            <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                <div class="card-body">
+                                    <h6 class="card-title"> Nome Paciente </h6>        
+                                </div>
+                            </div> 
+                            <div class="col-md-2 d-flex justify-content-center align-items-center">
+                                <div class="card-body">
+                                    <h6 class="card-title"> Exames </h6>        
+                                </div>
+                            </div>
+                            <div class="col-md-2 d-flex justify-content-center align-items-center">
+                                <div class="card-body">
+                                    <h6 class="card-title"> Realizado em </h6>        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-1 d-flex justify-content-center align-items-center">
+                                <img src="{% static 'img\img_usuario\no_image.svg' %}" class="img-fluid rounded-start" alt="img_médico" style="height: 42px; width: 42px; border-radius: 50%; overflow: hidden;">
+                            </div>
+                            <div class="col-md-2 d-flex justify-content-center align-items-center">
+                                <div class="card-body">
+                                    <h6 class="card-title"><a class="link-offset-1 text-reset text-decoration-none" href="#">{{ object.pk }}</a></h6>        
+                                </div>
+                            </div>
+                            <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                <div class="card-body">
+                                    <h6 class="card-title"><a class="link-offset-1 text-reset text-decoration-none" href="#">{{ paciente.first_name }} {{ paciente.last_name }}</a></h6>        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,66 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+<!-- isso faz com que o header tenha a animação necessaria apenas na homepage -->
+{% block isHomePage %}
+<script>
+    let isHomePage = false;
+</script>
+{% endblock isHomePage %}
+
+<!-- define o tamanho do header dependendo da pagina -->
+{% block heigth_header %} header_scrolled {% endblock heigth_header %}
+
+{% block content %}
+
+{% include 'core/form_messages.html' %}
+
+    <!-- AGENDAMENTO PROCEDIMENTOS -->
+    <div id="agendamento-container">
+        <form action="{% url 'agendar_consulta' id=user.id %}" method="post" id="agendamento">
+            {% csrf_token %}
+            <div id="container-title">
+                <p id="title-agendamento">Agendamento</p>
+            </div>
+            <div id="container-agendamento">
+                <select name="especialidade" class="select procedimento">
+                    <option id="title-select">Qual procedimento deseja escolher?</option>
+                    <option class="proc-option">Spa Simples</option>
+                    <option class="proc-option">Spa Completo</option>
+                    <option class="proc-option">Spa Luxo</option>
+                    <option class="proc-option">Cabeleireiro</option>
+                    <option class="proc-option">Depilação</option>
+                    <option class="proc-option">Manicure</option>
+                    <option class="proc-option">Podologia</option>
+                    <option class="proc-option">Dermapen</option>
+                    <option class="proc-option">Lasers</option>
+                    <option class="proc-option">Peeling Químico</option>
+                    <option class="proc-option">Preenchimento</option>
+                    <option class="proc-option">Corporal</option>
+                    <option class="proc-option">Facial</option>
+                </select>
+            </div>
+
+            <div id="container-agendamento">
+                <select name="especialista" class="select profissional">
+                    <option id="title-select">Qual profissional deseja escolher?</option>
+                    {% for especialista in especialistas %}
+                    <option>{{ especialista.first_name }} {{ especialista.last_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div id="container-agendamento">
+                <input type="datetime-local" name="data" id="data">
+            </div>
+
+            <div id="container-agendamento">
+                <button id="btn-agendar" type="submit">Agendar</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
+
+{% block banner_footer %}
+<img src="/static/img/img_cadastro/banner_footer.svg" id="banner-footer">
+{% endblock banner_footer %}
